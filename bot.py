@@ -7,8 +7,9 @@ reddit accounts and automatically obtains and refreshed access tokens.
 
 Authors:
 - /u/tr4ce
+- /u/talwat
 2023 Version:
-- https://github.com/Yantrun
+- https://github.com/PlaceIL
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -66,7 +67,7 @@ REDDIT_PLACE_SET_PIXEL_URL = "https://gql-realtime-2.reddit.com/query"
 PLACE_WEBSOCKET = "wss://gql-realtime-2.reddit.com/query"
 BACKEND_DOMAIN = os.getenv("PANEL")
 if BACKEND_DOMAIN is None:
-    BACKEND_DOMAIN = "r-placeczechbot.onrender.com"
+    BACKEND_DOMAIN = "https://placeil-command.onrender.com/"
 CNC_WEBSOCKET = f"wss://{BACKEND_DOMAIN}/api/ws"
 BACKEND_MAPS_URL = f"https://{BACKEND_DOMAIN}/maps"
 
@@ -177,7 +178,7 @@ class CNCOrderClient:
     def __init__(self, session):
         self.session = session
         self.ws = None
-        self.logger = logging.getLogger('PlaceCZ.cnc')
+        self.logger = logging.getLogger('PlaceIL.cnc')
 
     async def __aenter__(self):
         self.logger.info("Connecting to Command & Control server...")
@@ -216,7 +217,7 @@ class CNCOrderClient:
             return
 
         await self.ws.send_str(json.dumps({"type": "getmap"}))
-        await self.ws.send_str(json.dumps({"type": "brand", "brand": f"PlaceCZpythonV{__version__}"}))
+        await self.ws.send_str(json.dumps({"type": "brand", "brand": f"PlaceILpythonV{__version__}"}))
 
         async for msg in self.ws:
             try:
@@ -282,7 +283,7 @@ class RedditPlaceClient:
         self.access_token_expire = None
         self.current_canvas = None
 
-        self.logger = logging.getLogger(f'PlaceCZ.reddit.{username}')
+        self.logger = logging.getLogger(f'PlaceIL.reddit.{username}')
         self.debug = debug
 
     async def __aenter__(self) -> RedditPlaceClient:
