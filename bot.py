@@ -67,7 +67,7 @@ REDDIT_PLACE_SET_PIXEL_URL = "https://gql-realtime-2.reddit.com/query"
 PLACE_WEBSOCKET = "wss://gql-realtime-2.reddit.com/query"
 BACKEND_DOMAIN = os.getenv("PANEL")
 if BACKEND_DOMAIN is None:
-    BACKEND_DOMAIN = "https://placeil-command.onrender.com/"
+    BACKEND_DOMAIN = "placeil-command.onrender.com"
 CNC_WEBSOCKET = f"wss://{BACKEND_DOMAIN}/api/ws"
 BACKEND_MAPS_URL = f"https://{BACKEND_DOMAIN}/maps"
 
